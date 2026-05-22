@@ -1,0 +1,73 @@
+age[-inf,6.500)
+age[6.500,inf)
+fare[-inf,7.133)
+fare[7.133,10.481)
+fare[10.481,74.375)
+fare[74.375,inf)
+sibsp
+parch
+pclass_1
+pclass_2
+pclass_3
+sex_female
+sex_male
+embarked_C
+embarked_Q
+embarked_S
+survived_0
+survived_1
+#
+pclass_1 fare[7.133,10.481)
+pclass_1 fare[-inf,7.133)
+pclass_2 fare[74.375,inf)
+pclass_2 fare[7.133,10.481)
+pclass_2 fare[-inf,7.133)
+pclass_3 fare[10.481,74.375)
+pclass_3 fare[74.375,inf)
+age[-inf,6.500) survived_0
+age[6.500,inf) survived_0
+pclass_1 survived_0
+pclass_2 survived_0
+sex_female survived_0
+pclass_3 survived_1
+sex_male survived_1
+pclass_3 pclass_1
+pclass_1 pclass_2
+pclass_3 pclass_2
+pclass_2 pclass_3
+pclass_1 pclass_3
+pclass_3 age[-inf,6.500)
+sex_male age[-inf,6.500)
+pclass_3 age[6.500,inf)
+sex_male age[6.500,inf)
+sex_male pclass_1
+sex_male pclass_2
+pclass_3 sex_female
+sex_male sex_female
+age[-inf,6.500) pclass_3
+sex_female pclass_3
+age[-inf,6.500) sex_male
+pclass_1 sex_male
+pclass_2 sex_male
+sex_female sex_male
+age[-inf,6.500) age[6.500,inf)
+age[6.500,inf) age[-inf,6.500)
+fare[-inf,7.133) fare[7.133,10.481)
+fare[7.133,10.481) fare[-inf,7.133)
+fare[-inf,7.133) fare[10.481,74.375)
+fare[10.481,74.375) fare[-inf,7.133)
+fare[-inf,7.133) fare[74.375,inf)
+fare[74.375,inf) fare[-inf,7.133)
+fare[7.133,10.481) fare[10.481,74.375)
+fare[10.481,74.375) fare[7.133,10.481)
+fare[7.133,10.481) fare[74.375,inf)
+fare[74.375,inf) fare[7.133,10.481)
+fare[10.481,74.375) fare[74.375,inf)
+fare[74.375,inf) fare[10.481,74.375)
+pclass_2 pclass_1
+embarked_C embarked_Q
+embarked_Q embarked_C
+embarked_C embarked_S
+embarked_S embarked_C
+embarked_Q embarked_S
+embarked_S embarked_Q

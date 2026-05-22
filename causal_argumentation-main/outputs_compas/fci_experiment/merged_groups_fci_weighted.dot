@@ -1,0 +1,23 @@
+digraph G {
+rankdir=LR;
+label="Merged Group Directions (corr = strongest pair)";
+labelloc=t;
+fontsize=20;
+age [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+c_charge_degree [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+juv_any [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+priors_count [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+race_black [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+sex [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+two_year_recid [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+juv_any -> two_year_recid [arrowsize=0.9, label=" -0.194 ", fontsize=11, color="#c62828", penwidth=1.7754492637667454];
+priors_count -> two_year_recid [arrowsize=0.9, label=" -0.242 ", fontsize=11, color="#c62828", penwidth=1.968370066129737];
+race_black -> c_charge_degree [arrowsize=0.9, label=" -0.104 ", fontsize=11, color="#c62828", penwidth=1.4161881076625997];
+sex -> priors_count [arrowsize=0.9, label=" -0.113 ", fontsize=11, color="#c62828", penwidth=1.4539642237179584];
+age -> two_year_recid [arrowsize=0.9, label=" +0.138 ", fontsize=11, color="#2e7d32", penwidth=1.5517675169583196];
+priors_count -> race_black [arrowsize=0.9, label=" -0.171 ", fontsize=11, color="#c62828", penwidth=1.684312973482282];
+sex -> juv_any [arrowsize=0.9, label=" -0.096 ", fontsize=11, color="#c62828", style=dashed, penwidth=1.3854684192481614];
+age -> juv_any [arrowsize=0.9, label=" +0.162 ", fontsize=11, color="#2e7d32", penwidth=1.648230543356622];
+sex -> two_year_recid [arrowsize=0.9, label=" +0.101 ", fontsize=11, color="#2e7d32", penwidth=1.4036440942052206];
+c_charge_degree -> two_year_recid [arrowsize=0.9, label=" +0.120 ", fontsize=11, color="#2e7d32", penwidth=1.4813297591010128];
+}

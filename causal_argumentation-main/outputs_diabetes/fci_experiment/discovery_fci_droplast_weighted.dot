@@ -1,0 +1,26 @@
+digraph {
+fontsize=18;
+dpi=200;
+0 [label="Pregnancies[-inf,6.500)"];
+1 [label="Glucose[-inf,127.500)"];
+2 [label="BloodPressure[-inf,69.000)"];
+3 [label="SkinThickness[-inf,31.500)"];
+4 [label="Insulin[-inf,121.000)"];
+5 [label="BMI[-inf,27.850)"];
+6 [label="DiabetesPedigreeFunction[-inf,0.528)"];
+7 [label="Age[-inf,28.500)"];
+8 [label=Outcome];
+0 -> 7 [dir=both, arrowtail=odot, arrowhead=odot, label=" +0.496 ", fontsize=11, color="#2e7d32", penwidth=2.982257430768256];
+0 -> 8 [dir=both, arrowtail=none, arrowhead=normal, label=" -0.238 ", fontsize=11, color="#c62828", penwidth=1.9502296895425415];
+1 -> 2 [dir=both, arrowtail=normal, arrowhead=normal, label=" +0.187 ", fontsize=11, color="#2e7d32", penwidth=1.7492131564340478];
+4 -> 1 [dir=both, arrowtail=none, arrowhead=normal, label=" +0.316 ", fontsize=11, color="#2e7d32", penwidth=2.2645299600487085];
+1 -> 8 [dir=both, arrowtail=none, arrowhead=normal, label=" -0.426 ", fontsize=11, color="#c62828", penwidth=2.704437847250545];
+5 -> 2 [dir=both, arrowtail=odot, arrowhead=normal, label=" +0.199 ", fontsize=11, color="#2e7d32", penwidth=1.794884955810693];
+7 -> 2 [dir=both, arrowtail=odot, arrowhead=normal, label=" +0.297 ", fontsize=11, color="#2e7d32", penwidth=2.1862795321557034];
+3 -> 4 [dir=both, arrowtail=odot, arrowhead=normal, label=" +0.310 ", fontsize=11, color="#2e7d32", penwidth=2.241918529103894];
+3 -> 5 [dir=both, arrowtail=odot, arrowhead=odot, label=" +0.326 ", fontsize=11, color="#2e7d32", penwidth=2.305561154851675];
+4 -> 6 [dir=both, arrowtail=normal, arrowhead=normal, label=" +0.162 ", fontsize=11, color="#2e7d32", penwidth=1.6475191296291674];
+5 -> 8 [dir=both, arrowtail=none, arrowhead=normal, label=" -0.304 ", fontsize=11, color="#c62828", penwidth=2.2165180354858696];
+6 -> 8 [dir=both, arrowtail=none, arrowhead=normal, label=" -0.171 ", fontsize=11, color="#c62828", penwidth=1.6846081083416187];
+7 -> 8 [dir=both, arrowtail=none, arrowhead=normal, label=" -0.312 ", fontsize=11, color="#c62828", penwidth=2.248400766622191];
+}
