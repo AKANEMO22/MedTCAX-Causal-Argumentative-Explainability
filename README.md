@@ -14,7 +14,7 @@ Phiên bản causal_arg_with_tier bổ sung cơ chế Tier-based Background Know
 Các hàm mới được thêm vào
 Nhóm 1 — Xây dựng Tier (chạy trước FCI/PC)
 
-define_tiers(tier_groups)
+__define_tiers(tier_groups)__
 
 Vị trí trong pipeline: Trước khi gọi run_dual_and_merge_with_unified(), ở bước khai báo cấu hình.
 Nhận vào một dictionary dạng {tier_index: [danh_sách_feature]} do người dùng định nghĩa và chuyển đổi thành một dictionary ngược chiều {feature: tier_index} để tra cứu nhanh. Hàm này đảm bảo không có feature nào được gán vào nhiều tier cùng lúc và ném lỗi rõ ràng nếu phát hiện xung đột. Đây là điểm vào duy nhất để người dùng khai báo giả thiết nhân quả về thứ tự thời gian hoặc cấu trúc domain.
