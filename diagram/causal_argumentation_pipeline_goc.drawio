@@ -1,0 +1,114 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram id="pipeline" name="Causal Argumentation Pipeline">
+    <mxGraphModel dx="1791" dy="1002" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ybp6d9d4DmRhKn0vUnt9-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="440" width="460" x="510" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Raw Data&#xa;df, features, outcome" vertex="1">
+          <mxGeometry height="70" width="180" x="40" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Dual Encoding" vertex="1">
+          <mxGeometry height="70" width="160" x="290" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="C1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Discovery Encoding 1&#xa;drop_first" vertex="1">
+          <mxGeometry height="70" width="160" x="560" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="C2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Discovery Encoding 2&#xa;drop_last" vertex="1">
+          <mxGeometry height="70" width="160" x="560" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ybp6d9d4DmRhKn0vUnt9-4" edge="1" parent="1" source="D1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#F6B000;curved=0;strokeColor=#F6B000;" target="E">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Run PC / FCI" vertex="1">
+          <mxGeometry height="70" width="160" x="760" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ybp6d9d4DmRhKn0vUnt9-5" edge="1" parent="1" source="D2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontColor=#F6B000;curved=0;strokeColor=#F6B000;" target="E">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Run PC / FCI" vertex="1">
+          <mxGeometry height="70" width="160" x="760" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="E" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Extract Group Edges&#xa;dummy/bin → feature" vertex="1">
+          <mxGeometry height="80" width="170" x="990" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="F" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Merge Orientations" vertex="1">
+          <mxGeometry height="80" width="160" x="1200" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="G" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Unified Encoding&#xa;keep all dummy/bin" vertex="1">
+          <mxGeometry height="80" width="170" x="1400" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="H" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Final Unified Graph" vertex="1">
+          <mxGeometry height="80" width="170" x="1650" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="I" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="&lt;font&gt;Correlation Labeling&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="190" x="1640" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="J" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="BAF&#xa;support / attack" vertex="1">
+          <mxGeometry height="80" width="200" x="1635" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="K" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Classical AF&#xa;attack-only framework" vertex="1">
+          <mxGeometry height="80" width="220" x="1625" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="L" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Semi-stable Extensions" vertex="1">
+          <mxGeometry height="80" width="220" x="1625" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="M" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" value="Argumentative Explanation&#xa;accepted argument sets" vertex="1">
+          <mxGeometry height="80" width="210" x="1630" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="A" style="endArrow=block;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="B">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="B" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;rounded=1;curved=0;" target="C1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="155" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="B" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="C2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="C1" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="D1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="C2" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="D2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="E" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="F">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="F" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="G">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="G" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="H">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="H" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="I">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="H" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="J">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="J" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="K">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="K" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="L">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="L" style="endArrow=block;html=1;fillColor=#ffe6cc;strokeColor=#F6B000;fontSize=16;" target="M">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ybp6d9d4DmRhKn0vUnt9-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="Dual causal discovery" vertex="1">
+          <mxGeometry height="30" width="190" x="645" y="480" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

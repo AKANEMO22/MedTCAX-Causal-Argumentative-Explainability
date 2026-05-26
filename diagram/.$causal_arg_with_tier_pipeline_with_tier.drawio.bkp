@@ -1,0 +1,250 @@
+<mxfile host="app.diagrams.net" modified="2026-05-26T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="tier_pipeline" name="Tiered Causal Argumentation Pipeline">
+    <mxGraphModel dx="1800" dy="1000" grid="1" gridSize="10" guides="1"
+      tooltips="1" connect="1" arrows="1" fold="1" page="1"
+      pageScale="1" pageWidth="2400" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Nodes -->
+        <mxCell id="A" value="Raw Dataset&#10;df, features, outcome"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="B" value="Entropy Binning&#10;numeric → interval bins"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="180" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="C" value="One-hot Encoding&#10;categorical → dummy vars"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="440" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="D1" value="Discovery Encoding #1&#10;drop_first"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="180" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="D2" value="Discovery Encoding #2&#10;drop_last"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="440" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="T1" value="Tier Definition&#10;Tier 1: demographics&#10;Tier 2: intermediate vars&#10;Tier 3: outcome"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;"
+          vertex="1" parent="1">
+          <mxGeometry x="1020" y="60" width="320" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="T2" value="Build Background Knowledge&#10;forbidden / allowed directions"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;"
+          vertex="1" parent="1">
+          <mxGeometry x="1420" y="60" width="320" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="F1" value="Run FCI / PC #1"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;"
+          vertex="1" parent="1">
+          <mxGeometry x="1100" y="220" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="F2" value="Run FCI / PC #2"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;"
+          vertex="1" parent="1">
+          <mxGeometry x="1100" y="440" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="G" value="Extract Group-level Edges&#10;dummy/bin → feature"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;"
+          vertex="1" parent="1">
+          <mxGeometry x="1460" y="320" width="280" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="H" value="Merge Orientations&#10;majority / union / intersection"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;"
+          vertex="1" parent="1">
+          <mxGeometry x="1840" y="320" width="300" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="I" value="Unified Encoding&#10;keep all dummy/bin"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;"
+          vertex="1" parent="1">
+          <mxGeometry x="2260" y="320" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="J" value="Final Unified Graph"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;"
+          vertex="1" parent="1">
+          <mxGeometry x="2620" y="320" width="240" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="K" value="Correlation Analysis&#10;Pearson r"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;"
+          vertex="1" parent="1">
+          <mxGeometry x="2960" y="180" width="240" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="L" value="BAF&#10;positive r = support&#10;negative r = attack"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;"
+          vertex="1" parent="1">
+          <mxGeometry x="2960" y="380" width="260" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="M" value="Support Closure&#10;support → support propagation"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;"
+          vertex="1" parent="1">
+          <mxGeometry x="3340" y="380" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="N" value="Convert to Classical AF&#10;attack-only framework"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;"
+          vertex="1" parent="1">
+          <mxGeometry x="3720" y="380" width="280" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="O" value="Mutual Exclusivity Constraints&#10;dummy vars attack each other"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;"
+          vertex="1" parent="1">
+          <mxGeometry x="4120" y="380" width="320" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="P" value="Semi-stable Extensions"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;"
+          vertex="1" parent="1">
+          <mxGeometry x="4560" y="380" width="260" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Q" value="Accepted Argument Sets&#10;supporting vs attacking factors"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;"
+          vertex="1" parent="1">
+          <mxGeometry x="4940" y="380" width="320" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" parent="1" source="A" target="B"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" edge="1" parent="1" source="A" target="C"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" edge="1" parent="1" source="B" target="D1"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" edge="1" parent="1" source="C" target="D1"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" edge="1" parent="1" source="B" target="D2"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" edge="1" parent="1" source="C" target="D2"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" edge="1" parent="1" source="T1" target="T2"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e8" edge="1" parent="1" source="T2" target="F1"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e9" edge="1" parent="1" source="T2" target="F2"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e10" edge="1" parent="1" source="D1" target="F1"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e11" edge="1" parent="1" source="D2" target="F2"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e12" edge="1" parent="1" source="F1" target="G"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e13" edge="1" parent="1" source="F2" target="G"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e14" edge="1" parent="1" source="G" target="H"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e15" edge="1" parent="1" source="H" target="I"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e16" edge="1" parent="1" source="I" target="J"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e17" edge="1" parent="1" source="J" target="K"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e18" edge="1" parent="1" source="J" target="L"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e19" edge="1" parent="1" source="L" target="M"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e20" edge="1" parent="1" source="M" target="N"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e21" edge="1" parent="1" source="N" target="O"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e22" edge="1" parent="1" source="O" target="P"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e23" edge="1" parent="1" source="P" target="Q"
+          style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

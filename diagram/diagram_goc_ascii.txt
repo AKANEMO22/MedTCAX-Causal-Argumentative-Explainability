@@ -1,0 +1,40 @@
+[Imports + helper methods]
+  -> [_entropy / entropy_binning]
+  -> [_prepare_discovery_encoding]
+       - detect categorical
+       - entropy-bin numeric features
+       - optional binarize counts
+       - one-hot categorical
+       - impute numeric matrix
+  -> [_run_discovery] x2
+       - PC/FCI + fisherz
+       - force_sink(outcome)
+       - attach _processed_df + _encoding_groups
+      /                                          \
+[run1: drop_first]                         [run2: drop_last]
+      \                                          /
+       -> [_extract_group_edges]
+       -> [merge_orientations (majority)]
+       -> [_prepare_unified_encoding]
+       -> [expand merged group edges to encoded cols]
+       -> [merged unified graph]
+
+[merged unified graph]
+  -> [BAF]
+       - corr > 0 => support
+       - corr < 0 => attack
+  -> [make_binary_sink]
+       - outcome -> outcome_0 / outcome_1
+  -> [to_classical_af]
+       - support closure
+       - support -> attack propagation
+       - attack -> support propagation
+       - add mutual exclusivity
+  -> [generate_constellations]
+       - sample / enumerate significant attacks
+  -> [compute_extensions_probability]
+       - filter by require_one_of
+       - filter by group exclusivity
+       - normalize mass
+  -> [analyze_argument_acceptance]
+  -> [visualize / export PNG, APX, TGF]
