@@ -1,0 +1,27 @@
+digraph G {
+rankdir=LR;
+label="Merged Group Directions (K-Fold=5, corr = strongest pair)";
+labelloc=t;
+fontsize=20;
+age [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+ca [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+chol [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+cp [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+exang [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+num [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+oldpeak [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+sex [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+slope [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+thal [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+trestbps [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
+age -> trestbps [arrowsize=0.9, label=" -0.222 ", fontsize=11, color="#c62828", penwidth=1.889428278141549];
+age -> num [arrowsize=0.9, label=" +0.297 ", fontsize=11, color="#2e7d32", penwidth=2.1896429130996475];
+exang -> num [arrowsize=0.9, label=" -0.421 ", fontsize=11, color="#c62828", penwidth=2.685421961825812];
+thal -> num [arrowsize=0.9, label=" -0.525 ", fontsize=11, color="#c62828", penwidth=3.099887497407961];
+ca -> num [arrowsize=0.9, label=" -0.484 ", fontsize=11, color="#c62828", penwidth=2.9341209987654198];
+cp -> num [arrowsize=0.9, label=" +0.507 ", fontsize=11, color="#2e7d32", penwidth=3.028139926672511];
+slope -> num [arrowsize=0.9, label=" -0.381 ", fontsize=11, color="#c62828", penwidth=2.522447258562019];
+oldpeak -> num [arrowsize=0.9, label=" -0.390 ", fontsize=11, color="#c62828", penwidth=2.5612433054848953];
+sex -> thal [arrowsize=0.9, label=" -0.391 ", fontsize=11, color="#c62828", penwidth=2.56291842168593];
+sex -> chol [arrowsize=0.9, label=" -0.204 ", fontsize=11, color="#c62828", penwidth=1.817385678603575];
+}
