@@ -18,9 +18,9 @@ arg(two_year_recid_0).
 arg(two_year_recid_1).
 
 att(age[34.500,52.500),juv_any_1).
-att(sex_1,juv_any_0).
 att(sex_1,priors_count[-inf,0.500)).
 att(sex_1,c_charge_degree_0).
+att(sex_1,juv_any_0).
 att(race_black_0,juv_any_1).
 att(race_black_0,priors_count[8.500,inf)).
 att(race_black_1,c_charge_degree_0).

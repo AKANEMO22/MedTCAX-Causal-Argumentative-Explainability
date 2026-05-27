@@ -18,9 +18,9 @@ two_year_recid_0
 two_year_recid_1
 #
 age[34.500,52.500) juv_any_1
-sex_1 juv_any_0
 sex_1 priors_count[-inf,0.500)
 sex_1 c_charge_degree_0
+sex_1 juv_any_0
 race_black_0 juv_any_1
 race_black_0 priors_count[8.500,inf)
 race_black_1 c_charge_degree_0

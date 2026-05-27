@@ -25,9 +25,7 @@ dpi=200;
 6 -> 3 [dir=both, arrowtail=none, arrowhead=normal, label=" -0.400 ", fontsize=11, color="#c62828", penwidth=2.599999999999998];
 5 -> 4 [dir=both, arrowtail=none, arrowhead=normal, label=" +0.420 ", fontsize=11, color="#2e7d32", penwidth=2.680932707475021];
 8 -> 5 [dir=both, arrowtail=none, arrowhead=normal, label=" +0.248 ", fontsize=11, color="#2e7d32", penwidth=1.9900907139670656];
-7 -> 6 [dir=both, arrowtail=odot, arrowhead=normal, label=" -1.000 ", fontsize=11, style=dotted, color="#c62828", penwidth=5.0];
 6 -> 9 [dir=both, arrowtail=normal, arrowhead=normal, label=" +0.296 ", fontsize=11, color="#2e7d32", penwidth=2.1856907175866684];
 6 -> 11 [dir=both, arrowtail=none, arrowhead=normal, label=" +0.286 ", fontsize=11, color="#2e7d32", penwidth=2.1436150711349695];
 8 -> 11 [dir=both, arrowtail=none, arrowhead=normal, label=" +0.543 ", fontsize=11, color="#2e7d32", penwidth=3.17340552263102];
-10 -> 9 [dir=both, arrowtail=odot, arrowhead=normal, label=" -1.000 ", fontsize=11, style=dotted, color="#c62828", penwidth=5.0];
 }
