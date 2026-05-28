@@ -1,0 +1,288 @@
+﻿Found in cell 3
+
+
+def _unwrap_graph(result):
+    try:
+        return result.G
+    except Exception:
+        return result[0] if isinstance(result, (list, tuple)) else result
+
+def _ensure_numeric(df: pd.DataFrame, cols):
+    out = {}
+    for c in cols:
+        s = df[c]
+        if pd.api.types.is_numeric_dtype(s):
+            out[c] = s
+        else:
+            codes, _ = pd.factorize(s, sort=True)
+            out[c] = pd.Series(codes, index=s.index)
+    return pd.DataFrame(out)
+
+# def force_sink(graph, sink_name: str):
+#     sink = graph.get_node(sink_name)
+#     if sink is None:
+#         raise ValueError(f"'{sink_name}' not found in graph")
+#     neighbors = list(graph.get_adjacent_nodes(sink))
+#     for nb in neighbors:
+#         for method in [
+#             lambda: graph.remove_edge(graph.get_edge(sink, nb)),
+#             lambda: graph.remove_edge(graph.get_edge(nb, sink)),
+#             lambda: graph.remove_edge_between(sink, nb)
+#         ]:
+#             try:
+#                 method()
+#             except Exception:
+#                 pass
+#         try:
+#             graph.add_directed_edge(nb, sink)
+#         except Exception:
+#             graph.add_edge(nb, sink, Endpoint.TAIL, Endpoint.ARROW)
+
+def define_tiers(tier_groups):
+    """
+    Map manual tier groups to per-feature tier index.
+    """
+    feature_tiers = {}
+    for tier, feats in tier_groups.items():
+        for feat in feats:
+            if feat in feature_tiers:
+                raise ValueError(f"Feature '{feat}' assigned to multiple tiers.")
+            feature_tiers[feat] = int(tier)
+    return feature_tiers
+
+def ensure_all_tiered(feature_tiers, features, outcome):
+    missing = [f for f in list(features) + [outcome] if f not in feature_tiers]
+    if missing:
+        raise ValueError(f"Missing tier assignment for: {missing}")
+
+def map_dummy_tiers(encoding_groups, feature_tiers, col_names):
+    """
+    Assign tiers to encoded columns based on their parent feature.
+    """
+    col_tiers = {}
+    for parent, cols in (encoding_groups or {}).items():
+        if parent not in feature_tiers:
+            continue
+        # Inherit tier from parent feature; no string matching needed.
+        for c in cols:
+            col_tiers[c] = feature_tiers[parent]
+    for c in col_names:
+        if c not in col_tiers and c in feature_tiers:
+            col_tiers[c] = feature_tiers[c]
+    missing = [c for c in col_names if c not in col_tiers]
+    if missing:
+        raise ValueError(f"Missing tier assignment for encoded columns: {missing}")
+    return col_tiers
+
+def build_background_knowledge(col_names, col_tiers):
+    bk = BackgroundKnowledge()
+    # BackgroundKnowledge expects Node objects, not strings.
+    nodes = {name: GraphNode(name) for name in col_names}
+    for a in col_names:
+        ta = col_tiers[a]
+        for b in col_names:
+            if a == b:
+                continue
+            tb = col_tiers[b]
+            if ta > tb:
+                bk.add_forbidden_by_node(nodes[a], nodes[b])
+    return bk
+
+def _edge_has_circle(edge, node_a, node_b):
+    try:
+        ea = edge.get_endpoint(node_a)
+        eb = edge.get_endpoint(node_b)
+    except Exception:
+        return False
+    return ea == Endpoint.CIRCLE or eb == Endpoint.CIRCLE
+
+def remove_ambiguous_same_tier_edges(graph, col_tiers, prefix_sep="_", forbid_same_prefix=True, bk=None):
+    if not col_tiers:
+        return
+    
+    from causallearn.graph.Endpoint import Endpoint # ─Éß║úm bß║úo import Endpoint
+    nodes = list(graph.get_nodes())
+    
+    for i, a in enumerate(nodes):
+        name_a = a.get_name()
+        ta = col_tiers.get(name_a)
+        if ta is None:
+            continue
+            
+        for b in nodes[i + 1:]:
+            name_b = b.get_name()
+            tb = col_tiers.get(name_b)
+            if tb is None:
+                continue
+                
+            # Lß║Ñy cß║ính nß╗æi giß╗»a a v├á b (nß║┐u c├│)
+            edge = graph.get_edge(a, b)
+            if edge is None:
+                edge = graph.get_edge(b, a)
+            if edge is None:
+                continue
+                
+            # Tr├¡ch xuß║Ñt ─æß║╖c tr╞░ng gß╗æc (v├¡ dß╗Ñ: pclass_1 -> pclass, sex_female -> sex)
+            root_a = name_a.split(prefix_sep)[0]
+            root_b = name_b.split(prefix_sep)[0]
+            
+            # ============================================================
+            # KIß╗éM TRA LUß║¼T C├ÖNG Gß╗ÉC (FORBID SAME ROOT) - ╞»U TI├èN H├ÇNG ─Éß║ªU
+            # ============================================================
+            if forbid_same_prefix and root_a == root_b:
+                try:
+                    graph.remove_edge(edge)
+                    continue # ─É├ú x├│a cß║ính c├╣ng gß╗æc, bß╗Å qua c├íc kiß╗âm tra ph├¡a d╞░ß╗¢i
+                except Exception:
+                    pass
+
+            # ============================================================
+            # LUß║¼T 1: Nß║╛U C├ÖNG Tß║ªNG (─É├ú sß╗¡a ─æß╗òi theo ├╜ bß║ín)
+            # ============================================================
+            if ta == tb:
+                # Cho ph├⌐p li├¬n kß║┐t c├╣ng tß║ºng tß╗▒ do nß║┐u kh├íc gß╗æc.
+                # Kh├┤ng thß╗▒c hiß╗çn x├│a cß║ính c├│ dß║Ñu tr├▓n 'o' ß╗ƒ ─æ├óy nß╗»a.
+                pass
+                        
+            # ============================================================
+            # LUß║¼T 2: Nß║╛U KH├üC Tß║ªNG (Giß╗» nguy├¬n cß║Ñu tr├║c ├⌐p chiß╗üu tß╗½ tr├¬n xuß╗æng)
+            # ============================================================
+            else:
+                # 1. X├íc ─æß╗ïnh ai l├á Th╞░ß╗úng nguß╗ôn (Tier sß╗æ nhß╗Å) v├á Hß║í nguß╗ôn (Tier sß╗æ lß╗¢n)
+                source_node = a if ta < tb else b
+                target_node = b if ta < tb else a
+                
+                # 2. Xß╗¡ l├╜ ├⌐p kiß╗âu m┼⌐i t├¬n xu├┤i d├▓ng
+                if edge.get_node1() == source_node:
+                    esource = edge.get_endpoint1()
+                    edge.set_endpoint2(Endpoint.ARROW) # Hß║í nguß╗ôn bß║»t buß╗Öc l├á '>'
+                    if esource != Endpoint.CIRCLE:
+                        edge.set_endpoint1(Endpoint.TAIL) # Th╞░ß╗úng nguß╗ôn chß╗ë ─æ╞░ß╗úc l├á '-' hoß║╖c 'o'
+                else:
+                    esource = edge.get_endpoint2()
+                    edge.set_endpoint1(Endpoint.ARROW) # Hß║í nguß╗ôn bß║»t buß╗Öc l├á '>'
+                    if esource != Endpoint.CIRCLE:
+                        edge.set_endpoint2(Endpoint.TAIL) # Th╞░ß╗úng nguß╗ôn chß╗ë ─æ╞░ß╗úc l├á '-' hoß║╖c 'o'
+def merge_k_orientations(list_of_edges, k, rule="majority"):
+    """
+    H├ám tß╗òng hß╗úp c├íc cß║ính tß╗½ K ─æß╗ô thß╗ï BAF (tß╗½ K-folds) dß╗▒a tr├¬n luß║¡t biß╗âu quyß║┐t.
+    ─É├ú ─æ╞░ß╗úc sß╗¡a lß║íi ─æß╗â lß║Ñy cß║ính c├│ tß║ºn suß║Ñt xuß║Ñt hiß╗çn cao nhß║Ñt v├á giß║úi quyß║┐t Tie.
+    """
+    from collections import Counter
+    dir_counts = Counter()
+    for edges in list_of_edges:
+        for (a, b) in edges:
+            dir_counts[(a, b)] += 1
+
+    merged = {}
+    # Lß║Ñy to├án bß╗Ö c├íc nodes duy nhß║Ñt xuß║Ñt hiß╗çn trong to├án bß╗Ö K ─æß╗ô thß╗ï
+    nodes = set([a for edges in list_of_edges for a, _ in edges] + 
+                [b for edges in list_of_edges for _, b in edges])
+    
+    pairs = set()
+    for a in nodes:
+        for b in nodes:
+            if a < b:
+                pairs.add((a, b))
+                
+    for a, b in pairs:
+        ab = dir_counts.get((a, b), 0)
+        ba = dir_counts.get((b, a), 0)
+        none_edge = k - ab - ba  # Tß║ºn suß║Ñt kh├┤ng c├│ cß║ính nß╗æi giß╗»a a v├á b
+        
+        if rule == "intersection":
+            if ab == k: merged[(a, b)] = 1
+            if ba == k: merged[(b, a)] = 1
+        elif rule == "union":
+            if ab > 0: merged[(a, b)] = 1
+            if ba > 0: merged[(b, a)] = 1
+        elif rule == "highest_freq":
+            # Lß║Ñy mß╗⌐c tß║ºn suß║Ñt cao nhß║Ñt trong 3 trß║íng th├íi
+            max_freq = max(ab, ba, none_edge)
+            
+            # --- TR╞»ß╗£NG Hß╗óP C├ô Tß║ªN SUß║ñT CAO NHß║ñT R├ò R├ÇNG (KH├öNG H├ÆA) ---
+            if ab == max_freq and ab > ba and ab > none_edge:
+                merged[(a, b)] = 1
+            elif ba == max_freq and ba > ab and ba > none_edge:
+                merged[(b, a)] = 1
+                
+            # --- TR╞»ß╗£NG Hß╗óP H├ÆA (TIE) ----------
+            elif max_freq > 0:
+                # Tie 1 & 2: H├▓a giß╗»a 1 chiß╗üu cß╗Ñ thß╗â (A->B hoß║╖c B->A) v├á Kh├┤ng c├│ cß║ính
+                if ab == max_freq and none_edge == max_freq:
+                    merged[(a, b)] = 1  # Optimistic: Giß╗» chiß╗üu A->B
+                elif ba == max_freq and none_edge == max_freq:
+                    merged[(b, a)] = 1  # Optimistic: Giß╗» chiß╗üu B->A
+                    
+                # Tie 3: H├▓a giß╗»a A->B v├á B->A (Xung ─æß╗Öt 2 chiß╗üu)
+                elif ab == max_freq and ba == max_freq:
+                    # Conservative: Kh├┤ng th├¬m cß║ính n├áo v├áo dictionary merged ─æß╗â tr├ính tß║ío chu tr├¼nh
+                    pass
+        else:  # majority (luß║¡t mß║╖c ─æß╗ïnh c┼⌐)
+            threshold = k / 2.0
+            if ab > ba and ab > threshold:
+                merged[(a, b)] = 1
+            elif ba > ab and ba > threshold:
+                merged[(b, a)] = 1
+                
+    return set(merged.keys())
+
+def k_fold_baf_discovery(df, features, outcome, categorical_features, k_splits=5,
+                         entropy_binning_config=None, binarize_counts=('sibsp', 'parch'),
+                         algo="pc", alpha=0.01, merge_rule="majority",
+                         unified_dummy_noise=0.0, depth=-1,
+                         tier_groups=None, feature_tiers=None, force_outcome=False):
+    """
+    H├ám Wrapper: Chß║íy K-fold sinh K ─æß╗ô thß╗ï, sau ─æ├│ merge lß║íi th├ánh 1 ─æß╗ô thß╗ï BAF duy nhß║Ñt.
+    Trß║ú vß╗ü cß║Ñu tr├║c dß╗» liß╗çu y hß╗çt h├ám run_dual_and_merge_with_unified ban ─æß║ºu.
+    """
+    kf = KFold(n_splits=k_splits, shuffle=True, random_state=42)
+    list_of_group_edges = []
+    
+    print(f"Bß║»t ─æß║ºu chß║íy {k_splits}-Fold Causal Discovery...")
+    
+    # 1. Chß║íy K-Fold lß║Ñy list K danh s├ích cß║ính
+    for fold, (train_index, _) in enumerate(kf.split(df), 1):
+        print(f"--- ─Éang tß║ío ─æß╗ô thß╗ï BAF cho Fold {fold}/{k_splits} ---")
+        df_train = df.iloc[train_index].copy()
+        
+        # Chß║íy kh├ím ph├í nh├ón quß║ú tr├¬n (K-1) tß║¡p data
+        _, merged_group_edges, _, _, _, _ = run_dual_and_merge_with_unified(
+            df_train, features, outcome, categorical_features,
+            entropy_binning_config=entropy_binning_config, binarize_counts=binarize_counts,
+            algo=algo, alpha=alpha, merge_rule=merge_rule,
+            unified_dummy_noise=unified_dummy_noise, depth=depth,
+            tier_groups=tier_groups, feature_tiers=feature_tiers, force_outcome=force_outcome
+        )
+        
+        list_of_group_edges.append(merged_group_edges)
+        
+    print(f"─É├ú xong K-fold. Bß║»t ─æß║ºu tß╗òng hß╗úp {k_splits} ─æß╗ô thß╗ï theo luß║¡t '{merge_rule}'...")
+    
+    # 2. Tß╗òng hß╗úp K kß║┐t quß║ú lß║íi th├ánh 1 tß║¡p cß║ính duy nhß║Ñt
+    final_merged_group_edges = merge_k_orientations(list_of_group_edges, k=k_splits, rule=merge_rule)
+    
+    # 3. Chuß║⌐n bß╗ï bß║úng m├ú h├│a (Encoding) tr├¬n TO├ÇN Bß╗ÿ DATA ─æß╗â giß╗» nguy├¬n c├íc ph├ón t├¡ch ─æß╗Ö t╞░╞íng quan ph├¡a sau
+    dfU, enc_groups_full = _prepare_unified_encoding(
+        df, features, outcome, categorical_features,
+        entropy_binning_config, binarize_counts, dummy_noise=unified_dummy_noise,
+    )
+
+    encoded_nodes = list(dfU.columns)
+
+    def group_cols(g):
+        return enc_groups_full.get(g, [g])
+
+    final_edges = []
+    for (gA, gB) in final_merged_group_edges:
+        for a in group_cols(gA):
+            for b in group_cols(gB):
+                if a != b:
+                    final_edges.append((a, b))
+
+    # Bß╗ìc dß╗» liß╗çu lß║íi bß║▒ng ResultShim - ─æ├óy l├á object m├á class BAF cß╗ºa bß║ín sß║╜ ─æß╗ìc hiß╗âu
+    merged_result = _ResultShim(final_edges, encoded_nodes, dfU, enc_groups_full)
+    print("Ho├án tß║Ñt tß╗òng hß╗úp ─æß╗ô thß╗ï BAF!")
+    
+    return merged_result, final_merged_group_edges, dfU, enc_groups_full
+
