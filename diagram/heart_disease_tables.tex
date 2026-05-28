@@ -1,0 +1,131 @@
+% Auto-generated from causal_argumentation-main/causal_arg_with_tier.ipynb
+
+% Generated on 2026-05-28
+
+\subsection*{Heart Disease tables extracted from \texttt{causal\_arg\_with\_tier.ipynb}}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{p{0.30\linewidth}p{0.62\linewidth}}
+\hline
+Item & Value \\
+\hline
+Source in notebook & UCI Heart Disease via fetch\_ucirepo(id=45) \\
+Raw shape & 303 rows, 13 features + 1 target \\
+Missing values before cleaning & 6 total (ca: 4, thal: 2) \\
+Shape after notebook cleaning & 297 rows after dropna().reset\_index(drop=True) \\
+Binary outcome & num=0: 160 (53.9\%), num=1: 137 (46.1\%) \\
+Pipeline predictors & sex, cp, trestbps, thalach, exang, oldpeak, ca, thal, age \\
+Tier 1 & age, sex \\
+Tier 2 & cp, trestbps, thalach, exang, oldpeak, ca, thal \\
+Tier 3 & num \\
+Discovery setup & k\_fold\_baf\_discovery, K=5, algo=fci, alpha=0.01 \\
+\hline
+\end{tabular}
+\caption{Heart Disease dataset overview and notebook configuration.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{llclp{0.38\linewidth}}
+\hline
+Feature & Role & Raw type & Tier & Notebook transform \\
+\hline
+sex & Predictor & Categorical & 1 & Categorical one-hot in discovery; full one-hot in unified encoding \\
+cp & Predictor & Categorical & 2 & Categorical one-hot in discovery; full one-hot in unified encoding \\
+trestbps & Predictor & Integer & 2 & Entropy binning in discovery; best split = 143.000 \\
+thalach & Predictor & Integer & 2 & Entropy binning in discovery; best split = 147.500 \\
+exang & Predictor & Categorical & 2 & Categorical one-hot in discovery; full one-hot in unified encoding \\
+oldpeak & Predictor & Integer & 2 & Entropy binning in discovery; best split = 1.700 \\
+ca & Predictor & Integer & 2 & Categorical one-hot in discovery; full one-hot in unified encoding \\
+thal & Predictor & Categorical & 2 & Categorical one-hot in discovery; full one-hot in unified encoding \\
+age & Predictor & Integer & 1 & Entropy binning in discovery; best split = 54.500 \\
+num & Outcome & Integer & 3 & Binary target: num = 1 iff original UCI num > 0 \\
+\hline
+\end{tabular}
+\caption{Heart Disease feature configuration used by the notebook pipeline.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\begin{tabular}{p{0.45\linewidth}rr}
+\hline
+Class & Count & Share \\
+\hline
+num = 0 (no disease) & 160 & 53.9\% \\
+num = 1 (disease) & 137 & 46.1\% \\
+\hline
+\end{tabular}
+\caption{Outcome distribution after the notebook binarizes num and drops missing rows.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{lrrrrrrr}
+\hline
+Feature & Mean & SD & Min & Q1 & Median & Q3 & Max \\
+\hline
+trestbps & 131.694 & 17.763 & 94 & 120 & 130 & 140 & 200 \\
+thalach & 149.599 & 22.942 & 71 & 133 & 153 & 166 & 202 \\
+oldpeak & 1.056 & 1.166 & 0 & 0 & 0.800 & 1.600 & 6.200 \\
+age & 54.542 & 9.050 & 29 & 48 & 56 & 61 & 77 \\
+\hline
+\end{tabular}
+\caption{Descriptive statistics for continuous Heart Disease predictors used in the pipeline.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{llrr}
+\hline
+Feature & Level & Count & Share \\
+\hline
+sex & 0 & 96 & 32.3\% \\
+sex & 1 & 201 & 67.7\% \\
+cp & 1 & 23 & 7.7\% \\
+cp & 2 & 49 & 16.5\% \\
+cp & 3 & 83 & 27.9\% \\
+cp & 4 & 142 & 47.8\% \\
+exang & 0 & 200 & 67.3\% \\
+exang & 1 & 97 & 32.7\% \\
+ca & 0 & 174 & 58.6\% \\
+ca & 1 & 65 & 21.9\% \\
+ca & 2 & 38 & 12.8\% \\
+ca & 3 & 20 & 6.7\% \\
+thal & 3 & 164 & 55.2\% \\
+thal & 6 & 18 & 6.1\% \\
+thal & 7 & 115 & 38.7\% \\
+\hline
+\end{tabular}
+\caption{Level frequencies for categorical Heart Disease predictors used in the pipeline.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{lrrc}
+\hline
+Feature & P-value & RF importance & Used in pipeline \\
+\hline
+thal & 1.242e-18 & 0.120980 & Yes \\
+cp & 1.178e-16 & 0.119219 & Yes \\
+ca & 1.373e-15 & 0.117524 & Yes \\
+oldpeak & 2.160e-14 & 0.105544 & Yes \\
+thalach & 2.240e-14 & 0.123176 & Yes \\
+exang & 9.511e-13 & 0.053397 & Yes \\
+slope & 3.630e-10 & 0.048968 & No \\
+sex & 0.000003 & 0.031521 & Yes \\
+age & 0.000079 & 0.101294 & Yes \\
+trestbps & 0.008055 & 0.074835 & Yes \\
+restecg & 0.008331 & 0.021432 & No \\
+chol & 0.167588 & 0.072463 & No \\
+fbs & 1 & 0.009647 & No \\
+\hline
+\end{tabular}
+\caption{P-value ranking and Random Forest importances from the notebook screening cell for Heart Disease.}
+\end{table}
