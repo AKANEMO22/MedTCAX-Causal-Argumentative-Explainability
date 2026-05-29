@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "render-framework-pngs",
+			"type": "shell",
+			"command": "c:\\Users\\hachimi\\Documents\\GitHub\\causal_argumentation_remake_DAP301m\\.venv\\Scripts\\python.exe",
+			"args": [
+				"c:\\Users\\hachimi\\Documents\\GitHub\\causal_argumentation_remake_DAP301m\\_render_framework_temp.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "remove-framework-intermediate",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-Command",
+				"Remove-Item -Force 'c:\\Users\\hachimi\\Documents\\GitHub\\causal_argumentation_remake_DAP301m\\causal_argumentation-main\\outputs_heart_disease\\fci_experiment\\framework.png'"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
