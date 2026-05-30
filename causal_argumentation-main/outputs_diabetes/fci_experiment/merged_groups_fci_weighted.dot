@@ -10,10 +10,10 @@ DiabetesPedigreeFunction [shape=box, style="rounded,filled", fillcolor="#eef5ff"
 Glucose [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
 Insulin [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
 Outcome [shape=box, style="rounded,filled", fillcolor="#eef5ff"];
-DiabetesPedigreeFunction -> Outcome [arrowsize=0.9, label=" +0.171 ", fontsize=11, color="#2e7d32", penwidth=1.6846081083416191];
-BMI -> Outcome [arrowsize=0.9, label=" -0.304 ", fontsize=11, color="#c62828", penwidth=2.2165180354858696];
 DiabetesPedigreeFunction -> Insulin [arrowsize=0.9, label=" +0.162 ", fontsize=11, color="#2e7d32", penwidth=1.6475191296291674];
-Age -> Outcome [arrowsize=0.9, label=" +0.312 ", fontsize=11, color="#2e7d32", penwidth=2.2484007666221917];
+BMI -> Outcome [arrowsize=0.9, label=" -0.304 ", fontsize=11, color="#c62828", penwidth=2.2165180354858696];
 Age -> BloodPressure [arrowsize=0.9, label=" -0.297 ", fontsize=11, color="#c62828", penwidth=2.1862795321557043];
+DiabetesPedigreeFunction -> Outcome [arrowsize=0.9, label=" +0.171 ", fontsize=11, color="#2e7d32", penwidth=1.6846081083416191];
+Age -> Outcome [arrowsize=0.9, label=" +0.312 ", fontsize=11, color="#2e7d32", penwidth=2.2484007666221917];
 Glucose -> Outcome [arrowsize=0.9, label=" -0.426 ", fontsize=11, color="#c62828", penwidth=2.704437847250545];
 }
