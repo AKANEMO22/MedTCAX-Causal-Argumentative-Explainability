@@ -1,0 +1,21 @@
+digraph G {
+rankdir=LR;
+label="K-Fold 2 Merged Group Directions (corr = strongest pair)";
+labelloc=t;
+fontsize=20;
+age [shape=ellipse, fontsize=10];
+ca [shape=ellipse, fontsize=10];
+cp [shape=ellipse, fontsize=10];
+num [shape=ellipse, fontsize=10];
+sex [shape=ellipse, fontsize=10];
+thal [shape=ellipse, fontsize=10];
+thalach [shape=ellipse, fontsize=10];
+trestbps [shape=ellipse, fontsize=10];
+age -> thalach [arrowsize=0.9, label=" -0.269 ", fontsize=11, color="#c62828", penwidth=2.0776150463574217];
+thal -> num [arrowsize=0.9, label=" -0.553 ", fontsize=11, color="#c62828", penwidth=3.210021786492374];
+ca -> num [arrowsize=0.9, label=" -0.499 ", fontsize=11, color="#c62828", penwidth=2.9950641677090557];
+sex -> thal [arrowsize=0.9, label=" +0.422 ", fontsize=11, color="#2e7d32", penwidth=2.6889853203962577];
+cp -> num [arrowsize=0.9, label=" +0.497 ", fontsize=11, color="#2e7d32", penwidth=2.9895097254480714];
+thalach -> num [arrowsize=0.9, label=" -0.436 ", fontsize=11, color="#c62828", penwidth=2.7434867083931005];
+age -> trestbps [arrowsize=0.9, label=" +0.259 ", fontsize=11, color="#2e7d32", penwidth=2.0364722644369335];
+}
