@@ -1,0 +1,14 @@
+,BAF/AF,SHAP,LIME,RRF
+ca,9,1,1,1
+thal,7,2,3,2
+cp,8,3,2,3
+sex,5,4,7,4
+oldpeak,2,7,8,5
+age,4,12,4,6
+trestbps,3,13,5,7
+thalach,6,6,10,8
+exang,1,9,13,9
+chol,14,5,6,10
+slope,14,8,11,11
+restecg,14,10,9,12
+fbs,14,11,12,13

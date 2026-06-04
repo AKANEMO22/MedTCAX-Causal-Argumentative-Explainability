@@ -1,0 +1,24 @@
+digraph G {
+rankdir=LR;
+label="K-Fold 2 Merged Group Directions (corr = strongest pair)";
+labelloc=t;
+fontsize=20;
+Age [shape=ellipse, fontsize=10];
+BMI [shape=ellipse, fontsize=10];
+BloodPressure [shape=ellipse, fontsize=10];
+DiabetesPedigreeFunction [shape=ellipse, fontsize=10];
+Glucose [shape=ellipse, fontsize=10];
+Insulin [shape=ellipse, fontsize=10];
+Outcome [shape=ellipse, fontsize=10];
+Pregnancies [shape=ellipse, fontsize=10];
+SkinThickness [shape=ellipse, fontsize=10];
+BMI -> Outcome [arrowsize=0.9, label=" +0.313 ", fontsize=11, color="#2e7d32", penwidth=2.2517704645257552];
+BMI -> SkinThickness [arrowsize=0.9, label=" +0.293 ", fontsize=11, color="#2e7d32", penwidth=2.1732393780287778];
+BloodPressure -> BMI [arrowsize=0.9, label=" +0.213 ", fontsize=11, color="#2e7d32", penwidth=1.8536372882157224];
+Age -> BloodPressure [arrowsize=0.9, label=" -0.317 ", fontsize=11, color="#c62828", penwidth=2.2667228468250453];
+DiabetesPedigreeFunction -> Insulin [arrowsize=0.9, label=" +0.203 ", fontsize=11, color="#2e7d32", penwidth=1.8107560583768652];
+Age -> Outcome [arrowsize=0.9, label=" +0.316 ", fontsize=11, color="#2e7d32", penwidth=2.2625173498904];
+Glucose -> Outcome [arrowsize=0.9, label=" -0.436 ", fontsize=11, color="#c62828", penwidth=2.7444089743614155];
+DiabetesPedigreeFunction -> Outcome [arrowsize=0.9, label=" -0.184 ", fontsize=11, color="#c62828", penwidth=1.7371651338864122];
+Pregnancies -> Outcome [arrowsize=0.9, label=" -0.262 ", fontsize=11, color="#c62828", penwidth=2.0475267764578104];
+}

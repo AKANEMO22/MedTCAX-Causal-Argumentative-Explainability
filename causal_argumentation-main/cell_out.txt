@@ -1,0 +1,131 @@
+﻿
+============================================================
+Cell 15 [markdown]:
+    #### Diabetes ΓÇö LIME Global Ranking (multi-instance)
+    
+
+============================================================
+Cell 16 [code]:
+    # ΓöÇΓöÇ LIME Global Ranking: aggregate over 50 test instances (Diabetes) ΓöÇΓöÇ
+    import re, numpy as np, pandas as pd, os
+    
+    _OUTPUT_DIR_DIAB = 'outputs_diabetes'
+    _N_LIME = min(50, len(X_test_arr))
+    
+    # feature_names_diab was set earlier (X_train.columns.tolist())
+    _feat_set_diab = set(feature_names_diab)
+    
+    def _parse_lime_feature(condition_str, known_features):
+        """Extract the base feature name from a LIME 
+    ...
+
+============================================================
+Cell 17 [code]:
+    # =========================
+    # FULL PIPELINE ΓÇö Diabetes (robust on older sklearn)
+    # - preprocess (handles bool/bool nullable + categoricals)
+    # - train Keras NN
+    # - compute SHAP (KernelExplainer)
+    # - export high-quality figures (PDF + PNG)
+    # =========================
+    
+    import os
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    from sklearn.compose import ColumnTransformer
+    from sklearn.preprocessin
+    ...
+python : Traceback (most recent call last):
+At line:1 char:1
++ python find_cell.py 2>&1 | Out-File -Encoding utf8 cell_out.txt; Get- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\hachimi\Documents\GitHub\causal_argumentation_remake_DAP301m\causal_argumentation-main\find_cell.py", 
+line 9, in <module>
+    cell = nb['cells'][i]
+
+============================================================
+Cell 18 [code]:
+    # ΓöÇΓöÇ Save SHAP ranking to CSV (Diabetes) ΓÇö with feature name normalization ΓöÇΓöÇ
+    import numpy as np, pandas as pd, os, re
+    
+    _OUTPUT_DIR_DIAB = 'outputs_diabetes'
+    os.makedirs(_OUTPUT_DIR_DIAB, exist_ok=True)
+    
+    # Original feature names for Diabetes (before ColumnTransformer encoding)
+    _orig_features_diab = [
+        'Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
+        'Insulin', 'BMI', 'DiabetesPed
+    ...
+
+============================================================
+Cell 19 [markdown]:
+    ### COMPAS Recidivism
+
+============================================================
+Cell 48 [code]:
+    # ΓöÇΓöÇ LIME Global Ranking: aggregate over 50 test instances (Heart Disease) ΓöÇΓöÇ
+    import re, numpy as np, pandas as pd, os
+    from sklearn.impute import SimpleImputer
+    
+    _OUTPUT_DIR_HD = 'outputs_heart_disease'
+    _N_LIME_HD = min(50, len(X_test_arr))
+    _feat_set_hd = set(feature_names_hd)
+    
+    # Impute NaN in X_test before passing to LIME (Heart Disease has missing values)
+    _imputer_hd = SimpleImputer(strategy='med
+    ...
+
+============================================================
+Cell 49 [markdown]:
+    
+    FULL PIPELINE ΓÇö Heart Disease (robust on older sklearn)
+    - preprocess (handles bool/bool nullable + categoricals)
+    - train Keras NN
+    - compute SHAP (KernelExplainer)
+    - export high-quality figures (PDF + PNG)
+    
+
+============================================================
+Cell 50 [code]:
+    
+    import os
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    from sklearn.compose import ColumnTransformer
+    from sklearn.preprocessing import OneHotEncoder, StandardScaler
+    from sklearn.pipeline import Pipeline
+    from sklearn.impute import SimpleImputer
+    
+    import tensorflow as tf
+    from tensorflow import keras
+    from tensorflow.keras import layers
+    
+    import shap
+    
+    OUTPUT_DIR = "outputs_heart_disease"
+    os.make
+    ...
+
+============================================================
+Cell 51 [code]:
+    # ΓöÇΓöÇ Save SHAP ranking to CSV (Heart Disease) ΓÇö with feature name normalization ΓöÇΓöÇ
+    import numpy as np, pandas as pd, os, re
+    
+    _OUTPUT_DIR_HD = 'outputs_heart_disease'
+    os.makedirs(_OUTPUT_DIR_HD, exist_ok=True)
+    
+    # Original feature names for Heart Disease
+    _orig_features_hd = [
+        'age', 'sex', 'cp', 'trestbps', 'chol', 'fbs',
+        'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal'
+    ]
+    
+    def
+    ...
+           ~~~~~~~~~~~^^^
+IndexError: list index out of range
