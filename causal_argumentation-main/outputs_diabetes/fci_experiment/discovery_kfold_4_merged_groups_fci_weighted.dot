@@ -9,9 +9,9 @@ BloodPressure [shape=ellipse, fontsize=10];
 DiabetesPedigreeFunction [shape=ellipse, fontsize=10];
 Glucose [shape=ellipse, fontsize=10];
 Outcome [shape=ellipse, fontsize=10];
-BMI -> Outcome [arrowsize=0.9, label=" -0.303 ", fontsize=11, color="#c62828", penwidth=2.2115851195153464];
 Age -> BloodPressure [arrowsize=0.9, label=" +0.249 ", fontsize=11, color="#2e7d32", penwidth=1.9958327417810073];
 Age -> Outcome [arrowsize=0.9, label=" -0.308 ", fontsize=11, color="#c62828", penwidth=2.2333689063662767];
-Glucose -> Outcome [arrowsize=0.9, label=" -0.414 ", fontsize=11, color="#c62828", penwidth=2.6562559947903885];
+BMI -> Outcome [arrowsize=0.9, label=" -0.303 ", fontsize=11, color="#c62828", penwidth=2.2115851195153464];
 DiabetesPedigreeFunction -> Outcome [arrowsize=0.9, label=" +0.177 ", fontsize=11, color="#2e7d32", penwidth=1.7088813905675195];
+Glucose -> Outcome [arrowsize=0.9, label=" -0.414 ", fontsize=11, color="#c62828", penwidth=2.6562559947903885];
 }

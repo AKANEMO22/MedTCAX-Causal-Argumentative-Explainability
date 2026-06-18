@@ -1,9 +1,9 @@
 ,BAF/AF,SHAP,LIME,RRF
-BMI,1,2,2,1
-Glucose,5,1,1,2
-Age,3,3,3,3
-DiabetesPedigreeFunction,2,4,4,4
-BloodPressure,4,6,5,5
-Insulin,8,5,6,6
-Pregnancies,6,7,8,7
-SkinThickness,7,8,7,8
+Glucose,2,1,2,1
+BloodPressure,1,4,1,2
+SkinThickness,4,2,3,3
+Pregnancies,3,3,6,4
+Insulin,5,5,4,5
+BMI,6,7,5,6
+Age,7,6,7,7
+DiabetesPedigreeFunction,8,8,8,8

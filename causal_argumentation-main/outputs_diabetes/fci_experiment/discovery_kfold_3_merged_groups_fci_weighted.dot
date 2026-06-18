@@ -11,12 +11,12 @@ Glucose [shape=ellipse, fontsize=10];
 Insulin [shape=ellipse, fontsize=10];
 Outcome [shape=ellipse, fontsize=10];
 SkinThickness [shape=ellipse, fontsize=10];
-Insulin -> SkinThickness [arrowsize=0.9, label=" +0.327 ", fontsize=11, color="#2e7d32", penwidth=2.3073569352697865];
-BMI -> Outcome [arrowsize=0.9, label=" -0.293 ", fontsize=11, color="#c62828", penwidth=2.173684966153141];
-SkinThickness -> BMI [arrowsize=0.9, label=" -0.260 ", fontsize=11, color="#c62828", penwidth=2.040040980395971];
 Age -> BloodPressure [arrowsize=0.9, label=" +0.171 ", fontsize=11, color="#2e7d32", penwidth=1.684464592506552];
-DiabetesPedigreeFunction -> Insulin [arrowsize=0.9, label=" -0.151 ", fontsize=11, color="#c62828", penwidth=1.6058202274590399];
 Age -> Outcome [arrowsize=0.9, label=" -0.302 ", fontsize=11, color="#c62828", penwidth=2.2076978455447076];
-Glucose -> Outcome [arrowsize=0.9, label=" -0.447 ", fontsize=11, color="#c62828", penwidth=2.788731617532603];
+BMI -> Outcome [arrowsize=0.9, label=" -0.293 ", fontsize=11, color="#c62828", penwidth=2.173684966153141];
+DiabetesPedigreeFunction -> Insulin [arrowsize=0.9, label=" -0.151 ", fontsize=11, color="#c62828", penwidth=1.6058202274590399];
 DiabetesPedigreeFunction -> Outcome [arrowsize=0.9, label=" +0.177 ", fontsize=11, color="#2e7d32", penwidth=1.7090023355879964];
+Glucose -> Outcome [arrowsize=0.9, label=" -0.447 ", fontsize=11, color="#c62828", penwidth=2.788731617532603];
+Insulin -> SkinThickness [arrowsize=0.9, label=" +0.327 ", fontsize=11, color="#2e7d32", penwidth=2.3073569352697865];
+SkinThickness -> BMI [arrowsize=0.9, label=" -0.260 ", fontsize=11, color="#c62828", penwidth=2.040040980395971];
 }

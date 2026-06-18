@@ -14,11 +14,11 @@ thal [shape=ellipse, fontsize=10];
 thalach [shape=ellipse, fontsize=10];
 trestbps [shape=ellipse, fontsize=10];
 age -> thalach [arrowsize=0.9, label=" -0.269 ", fontsize=11, color="#c62828", penwidth=2.0741340208058996];
-thal -> num [arrowsize=0.9, label=" -0.525 ", fontsize=11, color="#c62828", penwidth=3.099887497407961];
-oldpeak -> num [arrowsize=0.9, label=" -0.404 ", fontsize=11, color="#c62828", penwidth=2.6156442073879136];
-sex -> thal [arrowsize=0.9, label=" -0.391 ", fontsize=11, color="#c62828", penwidth=2.56291842168593];
-cp -> num [arrowsize=0.9, label=" +0.507 ", fontsize=11, color="#2e7d32", penwidth=3.028139926672511];
-exang -> num [arrowsize=0.9, label=" -0.421 ", fontsize=11, color="#c62828", penwidth=2.685421961825812];
 age -> trestbps [arrowsize=0.9, label=" +0.302 ", fontsize=11, color="#2e7d32", penwidth=2.2069895335503915];
 ca -> num [arrowsize=0.9, label=" -0.484 ", fontsize=11, color="#c62828", penwidth=2.9341209987654198];
+cp -> num [arrowsize=0.9, label=" +0.507 ", fontsize=11, color="#2e7d32", penwidth=3.028139926672511];
+exang -> num [arrowsize=0.9, label=" -0.421 ", fontsize=11, color="#c62828", penwidth=2.685421961825812];
+oldpeak -> num [arrowsize=0.9, label=" -0.404 ", fontsize=11, color="#c62828", penwidth=2.6156442073879136];
+sex -> thal [arrowsize=0.9, label=" -0.391 ", fontsize=11, color="#c62828", penwidth=2.56291842168593];
+thal -> num [arrowsize=0.9, label=" -0.525 ", fontsize=11, color="#c62828", penwidth=3.099887497407961];
 }
