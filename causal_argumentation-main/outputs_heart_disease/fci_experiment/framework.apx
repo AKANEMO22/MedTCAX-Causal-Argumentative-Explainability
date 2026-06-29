@@ -24,12 +24,12 @@ arg(thal_7).
 arg(num_0).
 arg(num_1).
 
-att(age[-inf,54.500),thalach[-inf,147.500)).
 att(age[-inf,54.500),trestbps[143.000,inf)).
-att(age[54.500,inf),thalach[147.500,inf)).
+att(age[-inf,54.500),thalach[-inf,147.500)).
 att(age[54.500,inf),trestbps[-inf,143.000)).
-att(sex_0,thal_7).
+att(age[54.500,inf),thalach[147.500,inf)).
 att(sex_0,thal_6).
+att(sex_0,thal_7).
 att(sex_1,thal_3).
 att(oldpeak[1.700,inf),num_0).
 att(cp_4,num_0).

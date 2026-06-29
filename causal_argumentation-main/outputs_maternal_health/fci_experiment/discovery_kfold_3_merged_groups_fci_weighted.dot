@@ -1,0 +1,21 @@
+digraph G {
+rankdir=LR;
+label="K-Fold 3 Merged Group Directions (corr = strongest pair)";
+labelloc=t;
+fontsize=20;
+Age [shape=ellipse, fontsize=10];
+BS [shape=ellipse, fontsize=10];
+BodyTemp [shape=ellipse, fontsize=10];
+DiastolicBP [shape=ellipse, fontsize=10];
+HeartRate [shape=ellipse, fontsize=10];
+RiskLevel [shape=ellipse, fontsize=10];
+SystolicBP [shape=ellipse, fontsize=10];
+Age -> BS [arrowsize=0.9, label=" +0.379 ", fontsize=11, color="#2e7d32", penwidth=2.5171832883903815];
+Age -> BodyTemp [arrowsize=0.9, label=" -0.169 ", fontsize=11, color="#c62828", penwidth=1.6768501033069247];
+Age -> DiastolicBP [arrowsize=0.9, label=" -0.298 ", fontsize=11, color="#c62828", penwidth=2.192638475933764];
+BS -> HeartRate [arrowsize=0.9, label=" +0.272 ", fontsize=11, color="#2e7d32", penwidth=2.088284944626969];
+BS -> RiskLevel [arrowsize=0.9, label=" -0.636 ", fontsize=11, color="#c62828", penwidth=3.543957256887778];
+DiastolicBP -> SystolicBP [arrowsize=0.9, label=" +0.625 ", fontsize=11, color="#2e7d32", penwidth=3.501333796587388];
+HeartRate -> RiskLevel [arrowsize=0.9, label=" -0.257 ", fontsize=11, color="#c62828", penwidth=2.028545244247524];
+SystolicBP -> RiskLevel [arrowsize=0.9, label=" -0.591 ", fontsize=11, color="#c62828", penwidth=3.362742019528667];
+}

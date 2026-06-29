@@ -24,12 +24,12 @@ thal_7
 num_0
 num_1
 #
-age[-inf,54.500) thalach[-inf,147.500)
 age[-inf,54.500) trestbps[143.000,inf)
-age[54.500,inf) thalach[147.500,inf)
+age[-inf,54.500) thalach[-inf,147.500)
 age[54.500,inf) trestbps[-inf,143.000)
-sex_0 thal_7
+age[54.500,inf) thalach[147.500,inf)
 sex_0 thal_6
+sex_0 thal_7
 sex_1 thal_3
 oldpeak[1.700,inf) num_0
 cp_4 num_0

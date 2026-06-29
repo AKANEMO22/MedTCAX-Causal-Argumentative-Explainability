@@ -1,0 +1,21 @@
+digraph G {
+rankdir=LR;
+label="K-Fold 1 Merged Group Directions (corr = strongest pair)";
+labelloc=t;
+fontsize=20;
+Diagnosis [shape=ellipse, fontsize=10];
+area3 [shape=ellipse, fontsize=10];
+concave_points1 [shape=ellipse, fontsize=10];
+concave_points3 [shape=ellipse, fontsize=10];
+concavity1 [shape=ellipse, fontsize=10];
+perimeter1 [shape=ellipse, fontsize=10];
+perimeter3 [shape=ellipse, fontsize=10];
+radius3 [shape=ellipse, fontsize=10];
+area3 -> radius3 [arrowsize=0.9, label=" +0.966 ", fontsize=11, color="#2e7d32", penwidth=4.862913075104018];
+concave_points1 -> Diagnosis [arrowsize=0.9, label=" -0.832 ", fontsize=11, color="#c62828", penwidth=4.326065675611302];
+concave_points3 -> Diagnosis [arrowsize=0.9, label=" +0.830 ", fontsize=11, color="#2e7d32", penwidth=4.319595272380963];
+concavity1 -> concave_points3 [arrowsize=0.9, label=" +0.763 ", fontsize=11, color="#2e7d32", penwidth=4.051960113348487];
+perimeter1 -> perimeter3 [arrowsize=0.9, label=" +0.886 ", fontsize=11, color="#2e7d32", penwidth=4.542300660212065];
+perimeter3 -> area3 [arrowsize=0.9, label=" +0.919 ", fontsize=11, color="#2e7d32", penwidth=4.675445339673439];
+perimeter3 -> concave_points3 [arrowsize=0.9, label=" +0.744 ", fontsize=11, color="#2e7d32", penwidth=3.9746876319844375];
+}

@@ -1,0 +1,15 @@
+digraph G {
+rankdir=LR;
+label="Merged Group Directions";
+labelloc=t;
+fontsize=20;
+Diagnosis [shape=ellipse, fontsize=10];
+concave_points1 [shape=ellipse, fontsize=10];
+concave_points3 [shape=ellipse, fontsize=10];
+concavity1 [shape=ellipse, fontsize=10];
+perimeter3 [shape=ellipse, fontsize=10];
+concave_points1 -> Diagnosis [arrowsize=0.9, label=" -0.821 ", fontsize=11, color="#c62828", penwidth=4.285214488365025];
+concave_points3 -> Diagnosis [arrowsize=0.9, label=" -0.826 ", fontsize=11, color="#c62828", penwidth=4.305259950033003];
+concavity1 -> concave_points3 [arrowsize=0.9, label=" +0.801 ", fontsize=11, color="#2e7d32", penwidth=4.204687432977778];
+perimeter3 -> Diagnosis [arrowsize=0.9, label=" -0.830 ", fontsize=11, color="#c62828", penwidth=4.319497656540481];
+}
